@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログインできない場合の確認手順</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#f9d8b8',   // 背景色
+      edgeColor: '#f4b171',      // 線の色
+      fontSize: '17px'           // 文字サイズ
+    }
+  });
+  </script>
+  <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .paper {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* 縦に並べる（ヘッダーとコンテンツ） */
+        }
+
+        .header-wrap {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .header-wrap h1 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        .header-wrap p {
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        /* 下部の3カラム構成 */
+        .content-wrap {
+            display: flex;
+            flex: 1; /* 残りの高さをすべて使う */
+            gap: 1px; /* カラム間の隙間 */
+        }
+
+        .column {
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        .column-A { flex: 40%; }
+        .column-B { flex: 60%; }
+
+        .column-A { max-width: 50%; 
+                    border-radius: 4px; 
+                    margin-bottom: 10px; 
+                    text-align: right;
+                  }
+
+        .media-box {
+          margin-top: 20px;
+          padding-bottom: 10px;
+        }
+
+        .media-box p {
+          margin-bottom: 0;
+        }
+
+        .url-box {
+          width: 20%;
+          background-color: #f9f9f9; /*「箱」っぽくするための背景色 */
+          padding: 10px;
+          border-radius: 4px;
+          text-align: right; 
+          margin-left: auto;  /* 箱自体の幅を自動調整して右に寄せる */
+          width: fit-content; /* 中身の長さに合わせて箱の幅を縮める（お好みで） */
+          min-width: 20%;     /* 短すぎると不格好な場合は最小幅を指定 */
+        }
+
+        .url-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .url-box a:hover {
+            text-decoration: underline;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <div class="paper">
+        <header class="header-wrap">
+            <h1>ログインできない場合の確認手順</h1>
+            <p>ログインしようとしたら、パスワードが分からなくなってしまった・・・<br>
+               そんなときは、いきなり問い合わせをする前に、まずは下のフローチャートに沿って確認してください。
+            </p>
+        </header>
+        
+        <main class="content-wrap">
+
+          <section class="column column-A">
+            <div class="media-box">
+              <p>パスワードが「●●●●●」と表示されている</p>
+              <img src="//tbm-fs/general_dp/30_ＳＩＬ管理部/97_未分類/ジャン/test1/dist/画像1.png" alt="スクショ">
+            </div>
+
+            <div class="url-box">
+              <label style="font-size: 0.8em; color: #666;">パスワード確認手順</label>
+              <a href="N:\30_ＳＩＬ管理部\97_未分類\ジャン\test1\dist\LP_Edge_manual.html" target="_blank" style="display: block; word-break: break-all;">
+              こちら</a>
+            </div>
+        　</section> 
+
+          <section class="column column-B">
+            <div class="mermaid">
+              flowchart TD
+                A[ログインできない／<br/>パスワードを忘れた] 
+                  --> B[ブラウザーに保存されているが<br/>「●●●●●」で表示されている]
+
+                B -->|保存されている| C[ブラウザーに保存された<br/>パスワード確認手順を閲覧]
+                B -->|分からない| D[管理者に問い合わせ]
+
+                C -->|ログインできた！| Z[解決！]
+                C -->|分からなかった| D
+
+                D --> E[対象システムはどれですか？]
+
+                E -->|AD勤怠、Web給与明細| F[人事総務部へ連絡<br/>03-3623-9810]
+                E -->|Desknet's、LINE WORKS<br/>PCユーザ、Tebiki、他| G[IT管理者へ連絡<br/>03-3623-9819]
+
+                F --> Z
+                G --> Z
+
+                %% 配色ルール
+                %% 人事総務／緑vsIT赤
+                style F fill:#99cc99
+                style G fill:#ff9999
+            </div>
+          </section>
+        </main>
+    </div>
+</body>
+</html>
